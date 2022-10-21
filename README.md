@@ -1,21 +1,10 @@
-# Backend Symfony 5
-
-- [Backend Symfony 5](#backend-symfony-5)
-  - [Introduction](#introduction)
-  - [Installation](#installation)
-    - [Requirements](#requirements)
-    - [Local Installation](#local-installation)
-  - [API Endpoints](#api-endpoints)
-    - [Parameters](#parameters)
-    - [Endpoints](#endpoints)
-  - [Authors](#authors)
-  - [License](#license)
+# CRUD API with Symfony 5
 
 ## Introduction
 
 API able to create, update or delete resources in JSON format.
 
-A compatible interface based on Vue 2 is available in this [repository](https://github.com/kserbouty/frontend-vuejs).
+A compatible interface based on Vue 2 is available in this [repository](https://github.com/kserbouty/crud-vuejs).
 
 ## Installation
 
@@ -62,7 +51,7 @@ Run your server
 php -S localhost:8000 -t public
 ```
 
-You can now run a compatible [interface](https://github.com/kserbouty/frontend-vuejs) and interact with your products (port 8000 already set).
+You can now run a compatible [interface](https://github.com/kserbouty/crud-vuejs) and interact with your products (port 8000 already set).
 
 ## API Endpoints
 
