@@ -1,8 +1,8 @@
 {
-    "name": "archive/crud-symfony",
-    "description": "API able to create, update or delete resources in JSON format.",
+    "name": "archive/api",
+    "description": "REST API with resources available in JSON.",
     "type": "project",
-    "homepage": "https://github.com/kserbouty/crud-symfony",
+    "homepage": "https://github.com/kserbouty/api-symfony",
     "license": "MIT",
     "authors": [
         {
@@ -11,7 +11,7 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/kserbouty/crud-symfony/issues",
+        "issues": "https://github.com/kserbouty/api-symfony/issues",
         "email": "kserbouty.dev@protonmail.com"
     },
     "require": {
