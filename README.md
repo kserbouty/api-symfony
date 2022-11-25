@@ -1,84 +1,106 @@
-# CRUD API with Symfony 5
+# REST API with Symfony 5
 
-## Introduction
+REST API with resources available in JSON.
 
-API able to create, update or delete resources in JSON format.
+---
 
-A compatible interface based on Vue 2 is available in this [repository](https://github.com/kserbouty/crud-vuejs).
+## Requirements
+
+- PHP 7.2.5+
+- Composer 2+
+- MySQL 8+
 
 ## Installation
 
-### Requirements
+Clone the repository
 
-- Apache Server >=2.4
-- PHP >=7.2 with Composer
+```bash
+git clone https://github.com/kserbouty/api-symfony.git
+```
 
-### Local Installation
+Switch to the repository folder
 
-Install the dependencies
+```bash
+cd api-symfony
+```
+
+Install all the dependencies using composer
 
 ```bash
 composer install
 ```
 
-Set your database in the .env file
+Make the required configuration changes in the .env file
 
 ```bash
-DATABASE_URL="mysql://dbusername:dbpassword@127.0.0.1:3306/dbname?serverVersion=8.0"
+DATABASE_URL="mysql://dbuser:dbpassword@127.0.0.1:3306/dbname?serverVersion=8.0&charset=utf8"
 ```
 
-Create the database
+Run the database migrations
 
 ```bash
 php bin/console doctrine:database:create
-```
-
-Create the table
-
-```bash
 php bin/console doctrine:migrations:migrate
-```
-
-Add random products
-
-```bash
 php bin/console doctrine:fixtures:load
 ```
 
-Run your server
+Start the local development server
 
 ```bash
 php -S localhost:8000 -t public
 ```
 
-You can now run a compatible [interface](https://github.com/kserbouty/crud-vuejs) and interact with your products (port 8000 already set).
+You can now access the server at <http://localhost:8000>.
 
-## API Endpoints
+## Docker
 
-### Parameters
+To install with Docker, run following commands:
 
-| Name          | Type   |
-|---------------|--------|
-| name          | string |
-| description   | string |
-| quantity      | int    |
-| price         | int    |
+```bash
+git clone https://github.com/kserbouty/api-symfony.git
+cd api-symfony
+docker compose up -d --build
+docker exec web-server composer install
+```
 
-### Endpoints
+Make the required configuration changes in the .env file
 
-| HTTP    | Endpoint              |
-|---------|-----------------------|
-| POST    | /api/json/create      |
-| POST    | /api/query/create     |
-| GET     | /api/json/get         |
-| GET     | /api/json/get/{id}    |
-| PATCH   | /api/json/update/{id} |
-| PUT     | /api/json/update/{id} |
-| DELETE  | /api/json/delete/{id} |
+```bash
+DATABASE_URL="mysql://root:@database:3306/api_symfony?serverVersion=8.0&charset=utf8"
+```
 
-## Authors
+Run the database migrations
 
-Karim Serbouty
+```bash
+docker exec web-server php bin/console doctrine:database:create
+docker exec web-server php bin/console doctrine:migrations:migrate -q
+docker exec web-server php bin/console doctrine:fixtures:load -q
+```
+
+The api can be accessed at <http://localhost:8000>.
+
+---
+
+## Parameters
+
+| Name          | Type     | Required |
+|---------------|----------|----------|
+| name          | string   | Yes      |
+| description   | string   | Yes      |
+| quantity      | integer  | Yes      |
+| price         | integer  | Yes      |
+
+## Endpoints
+
+| HTTP      | Endpoint              | MIME type        |
+|-----------|-----------------------|------------------|
+| GET       | /api/json/get         | application/json |
+| GET       | /api/json/get/{id}    | application/json |
+| POST      | /api/json/create      | application/json |
+| PATCH/PUT | /api/json/update/{id} | application/json |
+| DELETE    | /api/json/delete/{id} | application/json |
+
+---
 
 ## License
 
